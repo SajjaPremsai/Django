@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'Student/Styles/dashboard.css' %}" />
+    <title>Student Dashboard</title>
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="user">
+        <div class="user_main">
+          <div class="user_img">
+            <img src="{% static 'Images/user.jpg'%}" />
+          </div>
+          <div class="user_content">
+            <p class="user_name">21Q71A4241</p>
+            <p>CSM</p>
+          </div>
+        </div>
+      </div>
+      <div class="middle">
+        <ul class="navs">
+          <li class="nav_link">
+            <a>
+              <i class="bx bxs-dashboard"></i>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li class="nav_link">
+            <a>
+              <i class="bx bxs-dashboard"></i>
+              <span>Profile</span>
+            </a>
+          </li>
+          <li class="nav_link">
+            <a>
+              <i class="bx bxs-dashboard"></i>
+              <span>Attendence</span>
+            </a>
+          </li>
+          <li class="nav_link">
+            <a>
+              <i class="bx bxs-dashboard"></i>
+              <span>Learning</span>
+            </a>
+          </li>
+          <li class="nav_link">
+            <a>
+              <i class="bx bxs-dashboard"></i>
+              <span>Store</span>
+            </a>
+          </li>
+          <li class="nav_link">
+            <a>
+              <i class="bx bxs-dashboard"></i>
+              <span>Results</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="bottom">
+        <ul class="bottom_nav">
+          <li>
+            <i class="bx bx-log-out"></i>
+            <span>Logout</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    {% block content %}
+
+    <div class="Hor_Nav">
+      <h1>Hello world</h1>
+    </div>
+
+
+    {% endblock %}
+    </section>
+  </body>
+</html>

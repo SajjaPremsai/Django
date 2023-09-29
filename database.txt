@@ -1,0 +1,102 @@
+-- Create the Teacher Table
+CREATE TABLE Teacher (
+    teacher_id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    email VARCHAR(100),
+    -- Add other teacher attributes here
+);
+
+-- Create the Student Table
+CREATE TABLE Student (
+    student_id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    email VARCHAR(100),
+    year_id INT,
+    -- Add other student attributes here
+    FOREIGN KEY (year_id) REFERENCES Year(year_id)
+);
+
+-- Create the Admin Table
+CREATE TABLE Admin (
+    admin_id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    email VARCHAR(100),
+    -- Add other admin attributes here
+);
+
+-- Create the Course Table
+CREATE TABLE Course (
+    course_id INT AUTO_INCREMENT PRIMARY KEY,
+    course_name VARCHAR(100),
+    -- Add other course attributes here
+);
+
+-- Create the Branch Table
+CREATE TABLE Branch (
+    branch_id INT AUTO_INCREMENT PRIMARY KEY,
+    branch_name VARCHAR(100),
+    -- Add other branch attributes here
+);
+
+-- Create the Subject Table
+CREATE TABLE Subject (
+    subject_id INT AUTO_INCREMENT PRIMARY KEY,
+    subject_name VARCHAR(100),
+    -- Add other subject attributes here
+);
+
+-- Create the Results Table
+CREATE TABLE Results (
+    result_id INT AUTO_INCREMENT PRIMARY KEY,
+    student_id INT,
+    subject_id INT,
+    semester_id INT,
+    marks_obtained DECIMAL(5, 2),
+    -- Add other result attributes here
+    FOREIGN KEY (student_id) REFERENCES Student(student_id),
+    FOREIGN KEY (subject_id) REFERENCES Subject(subject_id),
+    FOREIGN KEY (semester_id) REFERENCES Semester(semester_id)
+);
+
+-- Create the Attendance Table
+CREATE TABLE Attendance (
+    attendance_id INT AUTO_INCREMENT PRIMARY KEY,
+    student_id INT,
+    subject_id INT,
+    semester_id INT,
+    date DATE,
+    status VARCHAR(10),
+    -- Add other attendance attributes here
+    FOREIGN KEY (student_id) REFERENCES Student(student_id),
+    FOREIGN KEY (subject_id) REFERENCES Subject(subject_id),
+    FOREIGN KEY (semester_id) REFERENCES Semester(semester_id)
+);
+
+-- Create the Profile Table
+CREATE TABLE Profile (
+    profile_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    profile_type ENUM('Teacher', 'Student', 'Admin'),
+    -- Add other profile attributes here
+    FOREIGN KEY (user_id) REFERENCES Teacher(teacher_id) ON DELETE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES Student(student_id) ON DELETE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES Admin(admin_id) ON DELETE CASCADE
+);
+
+-- Create the Year Table
+CREATE TABLE Year (
+    year_id INT AUTO_INCREMENT PRIMARY KEY,
+    year_name VARCHAR(20)
+);
+
+-- Create the Semester Table
+CREATE TABLE Semester (
+    semester_id INT AUTO_INCREMENT PRIMARY KEY,
+    semester_name VARCHAR(50),
+    year_id INT,
+    -- Add other semester attributes here
+    FOREIGN KEY (year_id) REFERENCES Year(year_id)
+);
